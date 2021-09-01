@@ -11,12 +11,21 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
+  late FocusNode myFocusNode;
   int sum = 0;
   final TextEditingController weightcontroller = TextEditingController();
   bool _validate = false;
   @override
   void initState() {
     super.initState();
+    myFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    myFocusNode.dispose();
+
+    super.dispose();
   }
 
   Color getColor(Set<MaterialState> states) {
@@ -49,6 +58,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 height: 50,
               ),
               TextField(
+                focusNode: myFocusNode,
                 decoration: InputDecoration(
                   labelText: 'Weight',
                   hintText: 'Enter Weight',
@@ -72,7 +82,8 @@ class _ShopScreenState extends State<ShopScreen> {
                           );
                           await WeightDatabase.instance.create(newWeight);
                           setState(() {
-                            weightcontroller.text = '';
+                            weightcontroller.clear();
+                            myFocusNode.requestFocus();
                           });
                         }
                       },

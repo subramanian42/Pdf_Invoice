@@ -10,6 +10,7 @@ class ReceiptScreen extends StatefulWidget {
 }
 
 class _ReceiptScreenState extends State<ReceiptScreen> {
+  List<String> columns = ['PRODUCT ID', 'PRODUCT WEIGHT'];
   late List<Weight> weights;
   bool isLoading = false;
   num totalWeight = 0;
@@ -17,7 +18,6 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
   void initState() {
     super.initState();
     obtainWeight();
-    obtaintotalWeight();
   }
 
   void obtainWeight() async {
@@ -44,7 +44,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
     );
   }
 
-  Widget createReceipt() {
+  /*  Widget createReceipt() {
     return ListView.builder(
         padding: EdgeInsets.all(10),
         itemCount: weights.length,
@@ -64,6 +64,18 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
             ],
           );
         });
+  } */
+  List<DataColumn> getColumns(List<String> columns) =>
+      columns.map((String column) => DataColumn(label: Text(column))).toList();
+  getCells(List<dynamic> cells) =>
+      cells.map((data) => DataCell(Text('$data'))).toList();
+  List<DataRow> getRows() => weights.map((Weight weight) {
+        final cells = [weight.id, weight.value];
+        return DataRow(cells: getCells(cells));
+      }).toList();
+
+  Widget createReceipt() {
+    return DataTable(columns: getColumns(columns), rows: getRows());
   }
 
   @override
@@ -74,7 +86,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('RECIPT SCREEN'),
+        title: Text('RECEIPT SCREEN'),
         centerTitle: true,
       ),
       body: isLoading
@@ -82,7 +94,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
           : weights.isEmpty
               ? Center(
                   child: Text(
-                    'No Notes',
+                    'No Weights',
                     style: TextStyle(color: Colors.black, fontSize: 24),
                   ),
                 )

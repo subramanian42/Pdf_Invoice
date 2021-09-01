@@ -65,7 +65,7 @@ class PdfInvoice {
       child: Row(children: [
         Spacer(flex: 5),
         Expanded(
-            flex: 6,
+            flex: 5,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
