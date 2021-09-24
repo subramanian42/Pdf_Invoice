@@ -44,27 +44,6 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
     );
   }
 
-  /*  Widget createReceipt() {
-    return ListView.builder(
-        padding: EdgeInsets.all(10),
-        itemCount: weights.length,
-        itemBuilder: (context, index) {
-          final Weight weight = weights[index];
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text('${weight.id}', style: TextStyle(fontSize: 17.5)),
-              SizedBox(
-                width: 100,
-              ),
-              Text(
-                '${weight.value}',
-                style: TextStyle(fontSize: 17.5),
-              ),
-            ],
-          );
-        });
-  } */
   List<DataColumn> getColumns(List<String> columns) => columns
       .map((String column) => DataColumn(
             label: Center(
@@ -75,6 +54,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
             ),
           ))
       .toList();
+
   getCells(List<dynamic> cells) => cells
       .map((data) => DataCell(Align(
           alignment: Alignment.center,
@@ -82,6 +62,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
             '$data',
           ))))
       .toList();
+
   List<DataRow> getRows() => weights.map((Weight weight) {
         final cells = [weight.id, weight.value];
         return DataRow(cells: getCells(cells));
