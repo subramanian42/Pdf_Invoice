@@ -65,17 +65,35 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
           );
         });
   } */
-  List<DataColumn> getColumns(List<String> columns) =>
-      columns.map((String column) => DataColumn(label: Text(column))).toList();
-  getCells(List<dynamic> cells) =>
-      cells.map((data) => DataCell(Text('$data'))).toList();
+  List<DataColumn> getColumns(List<String> columns) => columns
+      .map((String column) => DataColumn(
+            label: Center(
+              child: Text(
+                column,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ))
+      .toList();
+  getCells(List<dynamic> cells) => cells
+      .map((data) => DataCell(Align(
+          alignment: Alignment.center,
+          child: Text(
+            '$data',
+          ))))
+      .toList();
   List<DataRow> getRows() => weights.map((Weight weight) {
         final cells = [weight.id, weight.value];
         return DataRow(cells: getCells(cells));
       }).toList();
 
   Widget createReceipt() {
-    return DataTable(columns: getColumns(columns), rows: getRows());
+    return SingleChildScrollView(
+      child: DataTable(
+        columns: getColumns(columns),
+        rows: getRows(),
+      ),
+    );
   }
 
   @override
@@ -105,16 +123,6 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
                         height: 50,
                       ),
                       margin(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('PRODUCT ID'),
-                          SizedBox(
-                            width: 100,
-                          ),
-                          Text('PRODUCT WEIGHT'),
-                        ],
-                      ),
                       Container(
                         width: double.maxFinite,
                         height: 200,
@@ -124,12 +132,9 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text('TOTAL WEIGHT:'),
-                            SizedBox(
-                              width: 50,
-                            ),
                             Text(
                               '$totalWeight',
                               style: TextStyle(fontSize: 17.5),
