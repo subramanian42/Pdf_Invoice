@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/bussiness/pdf_api.dart';
-import 'package:testproject/bussiness/pdf_invoice.dart';
-import 'package:testproject/bussiness/weight_database.dart';
+import 'package:testproject/business/pdf_api.dart';
+import 'package:testproject/business/pdf_invoice.dart';
+import 'package:testproject/business/weight_database.dart';
 import 'package:testproject/model/Weight.dart';
 
 class ReceiptScreen extends StatefulWidget {

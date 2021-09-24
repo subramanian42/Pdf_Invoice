@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/bussiness/weight_database.dart';
+import 'package:testproject/business/weight_database.dart';
 import 'package:testproject/model/Weight.dart';
 import 'package:testproject/screen/receipt_screen.dart';
 
