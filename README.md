@@ -1,4 +1,4 @@
-# WeightApp
+# Weights App
 Demo app which calculates weight and stores in Sqflite database and generates a pdf invoice
 
 
