@@ -3,6 +3,6 @@ Demo app which calculates weight and stores in Sqflite database and generates a 
 
 
 
-<img src="/screenshots/Screenshot_1630216801.png" width="200" height="400">   <space> <img src="/screenshots/Screenshot_1630216806.png" width="200" height="400"> 
+<img src="/screenshots/Screenshot_1630216801.png" width="200" height="400">   <br /> <img src="/screenshots/Screenshot_1630216806.png" width="200" height="400"> 
 
-<img src="/screenshots/Screenshot_1630216855.png" width="200" height="400">  <space> <img src="/screenshots/Screenshot_1630216871.png" width="200" height="400"> 
+<img src="/screenshots/Screenshot_1630216855.png" width="200" height="400">  <br /> <img src="/screenshots/Screenshot_1630216871.png" width="200" height="400"> 
